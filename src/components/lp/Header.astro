@@ -3,7 +3,8 @@ import type { LandingPage } from '../../lib/lp';
 import { whatsappUrl } from '../../lib/lp';
 import Icon from '../Icon.astro';
 const { lp } = Astro.props as { lp: LandingPage };
-const nav = [['#metodo', 'Metodologia'], ['#cursos', 'Cursos'], ['#caminhos', 'Programas'], ['#faq', 'Dúvidas']];
+const nav = lp.ui?.nav ?? [['#metodo', 'Metodologia'], ['#cursos', 'Cursos'], ['#caminhos', 'Programas'], ['#faq', 'Dúvidas']];
+const cta = lp.ui?.headerCta ?? 'Falar com a secretaria';
 ---
 <header data-header class="group fixed inset-x-0 top-0 z-50 transition-all duration-500 [&.is-scrolled]:py-0">
   <div class="mx-auto mt-3 flex max-w-6xl items-center justify-between gap-4 rounded-full px-4 py-2.5 transition-all duration-500 group-[.is-scrolled]:glass group-[.is-scrolled]:bg-black/50 group-[.is-scrolled]:shadow-2xl sm:px-6">
@@ -17,7 +18,7 @@ const nav = [['#metodo', 'Metodologia'], ['#cursos', 'Cursos'], ['#caminhos', 'P
       {nav.map(([href, label]) => <a href={href} class="transition-colors hover:text-white">{label}</a>)}
     </nav>
     <a href={whatsappUrl(lp)} target="_blank" rel="noopener" class="btn-primary !min-h-10 !px-4 text-sm sm:!px-5">
-      <Icon name="whatsapp" class="size-4" /><span class="hidden sm:inline">Falar com a secretaria</span><span class="sm:hidden">WhatsApp</span>
+      <Icon name="whatsapp" class="size-4" /><span class="hidden sm:inline">{cta}</span><span class="sm:hidden">WhatsApp</span>
     </a>
   </div>
 </header>

@@ -23,7 +23,7 @@ const { lp } = Astro.props;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'EducationalOrganization', name: `${lp.brand.name} ${lp.brand.city}`, sameAs: [lp.brand.instagram], telephone: `+${lp.whatsapp.number}`, address: { '@type': 'PostalAddress', addressLocality: lp.brand.city, addressRegion: 'MS', addressCountry: 'BR' } },
+    { '@type': lp.ui?.schemaType ?? 'EducationalOrganization', name: `${lp.brand.name} ${lp.brand.city}`, sameAs: [lp.brand.instagram], telephone: `+${lp.whatsapp.number}`, address: { '@type': 'PostalAddress', addressLocality: lp.brand.city, addressRegion: 'MS', addressCountry: 'BR' } },
     { '@type': 'FAQPage', mainEntity: lp.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   ],
 };
@@ -34,12 +34,12 @@ const jsonLd = {
     <Hero lp={lp} />
     <Marquee items={lp.marquee} />
     <Stats stats={lp.stats} />
-    <Method method={lp.method} />
+    <Method method={lp.method} eyebrow={lp.ui?.methodEyebrow} />
     <Courses lp={lp} />
     {lp.graduates && <Graduates graduates={lp.graduates} />}
     {lp.reviews && <Reviews reviews={lp.reviews} />}
     <Highlights lp={lp} />
-    <Steps steps={lp.steps} />
+    <Steps steps={lp.steps} eyebrow={lp.ui?.stepsEyebrow} title={lp.ui?.stepsTitle} />
     <Faq faq={lp.faq} />
     <FinalCta lp={lp} />
   </main>

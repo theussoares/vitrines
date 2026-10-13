@@ -10,7 +10,7 @@ const { lp } = Astro.props as { lp: LandingPage };
     <div class="flex items-center gap-5">
       <a href={lp.brand.instagram} target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-white"><Icon name="instagram" class="size-4" />Instagram</a>
       <a href={whatsappUrl(lp)} target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-white"><Icon name="whatsapp" class="size-4" />{lp.whatsapp.display}</a>
-      <a href={lp.brand.links.href} target="_blank" rel="noopener" class="hover:text-white">{lp.brand.links.label}</a>
+      {lp.brand.links && <a href={lp.brand.links.href} target="_blank" rel="noopener" class="hover:text-white">{lp.brand.links.label}</a>}
     </div>
   </div>
 </footer>

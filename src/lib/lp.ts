@@ -20,11 +20,26 @@ export interface Highlight {
   cta: Cta;
 }
 
+export interface LpUi {
+  schemaType?: string;
+  headerCta?: string;
+  nav?: [string, string][];
+  heroIcon?: IconName;
+  heroCards?: { big: string; small: string; tag: [string, string]; pill: { icon: IconName; text: string } };
+  methodEyebrow?: string;
+  coursesEyebrow?: string;
+  highlightsEyebrow?: string;
+  highlightsTitle?: string;
+  stepsEyebrow?: string;
+  stepsTitle?: string;
+}
+
 export interface LandingPage {
+  ui?: LpUi;
   slug: string;
   seo: { title: string; description: string; ogImage?: string };
   theme: { brand: string; brandDeep: string; glow: string };
-  brand: { name: string; city: string; instagram: string; links: Cta };
+  brand: { name: string; city: string; instagram: string; links?: Cta };
   whatsapp: { number: string; message: string; display: string };
   hero: {
     eyebrow: string;
