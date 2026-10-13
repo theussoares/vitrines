@@ -71,6 +71,19 @@ export const leoComunicacaoVisual: LandingPage = {
     { title: 'Cartão de visita', area: 'Papelaria', icon: 'card', blurb: 'Cartões que passam confiança desde o primeiro contato.' },
     { title: 'Adesivo perfurado', area: 'Vitrines e vidros', icon: 'dots', blurb: 'Comunique na vitrine sem perder a claridade.' },
   ],
+  gallery: {
+    eyebrow: 'Trabalhos',
+    title: 'Trabalhos que já estão por aí.',
+    text: 'Fachadas, cartões, placas e impressos feitos para negócios de Três Lagoas.',
+    photos: [
+      { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-fachada-pointbeer.jpg', alt: 'Fachada e letreiro instalados na PointBeer', tag: 'Fachada e letreiro instalados' },
+      { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-fachada-valedapedra.jpg', alt: 'Fachada e adesivagem de vitrine da Vale da Pedra Foods', tag: 'Fachada e adesivagem de vitrine' },
+      { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-cartoes-vamos.jpg', alt: 'Cartões de visita impressos', tag: 'Cartões de visita' },
+      { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-plaquinha-pix.jpg', alt: 'Plaquinha de Pix em acrílico', tag: 'Plaquinha de Pix em acrílico' },
+      { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-quadro-pvc.jpg', alt: 'Quadro decorativo em PVC', tag: 'Quadro decorativo em PVC' },
+      { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-panfleto-marmitaria.jpg', alt: 'Panfletos e cardápio impressos', tag: 'Panfletos e cardápio' },
+    ],
+  },
   highlights: [
     {
       tag: 'Fachadas',

@@ -55,6 +55,7 @@ export interface LandingPage {
   coursesSection: { title: string; text: string };
   courses: Course[];
   graduates?: { title: string; text: string; photos: { src: string; alt: string }[] };
+  gallery?: { eyebrow: string; title: string; text: string; photos: { src: string; alt: string; tag: string }[] };
   reviews?: { rating: string; count: number; title: string; source: string; sourceUrl: string; items: { name: string; text: string }[] };
   highlights: Highlight[];
   steps: { title: string; text: string }[];
