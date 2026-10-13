@@ -9,9 +9,10 @@ const cta = lp.ui?.headerCta ?? 'Falar com a secretaria';
 <header data-header class="group fixed inset-x-0 top-0 z-50 transition-all duration-500 [&.is-scrolled]:py-0">
   <div class="mx-auto mt-3 flex max-w-6xl items-center justify-between gap-4 rounded-full px-4 py-2.5 transition-all duration-500 group-[.is-scrolled]:glass group-[.is-scrolled]:bg-black/50 group-[.is-scrolled]:shadow-2xl sm:px-6">
     <a href="#top" class="flex items-center gap-2.5 font-display font-bold tracking-tight" aria-label={`${lp.brand.name} ${lp.brand.city}`}>
+      {lp.brand.logo ? <img src={lp.brand.logo} alt="" width="36" height="36" class="size-9 rounded-full object-cover" /> : (
       <span class="relative grid size-9 place-items-center rounded-full bg-brand shadow-[0_0_24px_var(--brand)]">
         <svg viewBox="0 0 64 64" class="size-9" aria-hidden="true"><path d="M12 38c8 14 32 14 42-6-10 4-28 4-42 6z" fill="#fff" opacity=".9" /></svg>
-      </span>
+      </span>)}
       <span class="leading-none">{lp.brand.name}<small class="block text-[10px] font-medium uppercase tracking-[.2em] text-white/50">{lp.brand.city}</small></span>
     </a>
     <nav class="hidden items-center gap-8 text-sm text-white/70 md:flex" aria-label="Seções">

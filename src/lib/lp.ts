@@ -39,7 +39,7 @@ export interface LandingPage {
   slug: string;
   seo: { title: string; description: string; ogImage?: string };
   theme: { brand: string; brandDeep: string; glow: string };
-  brand: { name: string; city: string; instagram: string; links?: Cta };
+  brand: { logo?: string; name: string; city: string; instagram: string; links?: Cta };
   whatsapp: { number: string; message: string; display: string };
   hero: {
     eyebrow: string;
