@@ -1,0 +1,15 @@
+---
+import '../styles/global.css';
+import { landingPages } from '../lps';
+---
+<html lang="pt-BR">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex" /><title>Vitrines</title></head>
+  <body class="grid min-h-screen place-items-center p-8">
+    <main class="w-full max-w-md">
+      <h1 class="text-3xl font-bold">Vitrines</h1>
+      <ul class="mt-6 space-y-2">
+        {landingPages.map((lp) => <li><a class="glass block rounded-2xl p-4 hover:bg-white/10" href={`/${lp.slug}`}>{lp.brand.name} · {lp.brand.city}</a></li>)}
+      </ul>
+    </main>
+  </body>
+</html>

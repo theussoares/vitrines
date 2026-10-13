@@ -1,0 +1,18 @@
+---
+import type { LandingPage } from '../../lib/lp';
+import Icon from '../Icon.astro';
+const { faq } = Astro.props as { faq: LandingPage['faq'] };
+---
+<section id="faq" class="mx-auto max-w-3xl px-5 py-20">
+  <h2 data-reveal class="text-center text-4xl font-bold sm:text-5xl">Perguntas frequentes</h2>
+  <div class="mt-12 space-y-3">
+    {faq.map((f, i) => (
+      <details data-reveal style={`--d:${i}`} class="glass group rounded-2xl px-6">
+        <summary class="flex min-h-16 cursor-pointer items-center justify-between gap-4 py-4 text-left font-semibold">
+          {f.q}<Icon name="plus" class="faq-plus size-5 shrink-0 text-glow transition-transform duration-300" />
+        </summary>
+        <p class="pb-6 text-white/60">{f.a}</p>
+      </details>
+    ))}
+  </div>
+</section>

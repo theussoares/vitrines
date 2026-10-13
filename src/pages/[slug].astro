@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../layouts/Base.astro';
+import Header from '../components/lp/Header.astro';
+import Hero from '../components/lp/Hero.astro';
+import Marquee from '../components/lp/Marquee.astro';
+import Stats from '../components/lp/Stats.astro';
+import Method from '../components/lp/Method.astro';
+import Courses from '../components/lp/Courses.astro';
+import Highlights from '../components/lp/Highlights.astro';
+import Steps from '../components/lp/Steps.astro';
+import Faq from '../components/lp/Faq.astro';
+import FinalCta from '../components/lp/FinalCta.astro';
+import Footer from '../components/lp/Footer.astro';
+import { landingPages } from '../lps';
+
+export const getStaticPaths = (() =>
+  landingPages.map((lp) => ({ params: { slug: lp.slug }, props: { lp } }))) satisfies GetStaticPaths;
+
+const { lp } = Astro.props;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'EducationalOrganization', name: `${lp.brand.name} ${lp.brand.city}`, sameAs: [lp.brand.instagram], telephone: `+${lp.whatsapp.number}`, address: { '@type': 'PostalAddress', addressLocality: lp.brand.city, addressRegion: 'MS', addressCountry: 'BR' } },
+    { '@type': 'FAQPage', mainEntity: lp.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  ],
+};
+---
+<Base lp={lp} jsonLd={jsonLd}>
+  <Header lp={lp} />
+  <main>
+    <Hero lp={lp} />
+    <Marquee items={lp.marquee} />
+    <Stats stats={lp.stats} />
+    <Method method={lp.method} />
+    <Courses lp={lp} />
+    <Highlights lp={lp} />
+    <Steps steps={lp.steps} />
+    <Faq faq={lp.faq} />
+    <FinalCta lp={lp} />
+  </main>
+  <Footer lp={lp} />
+</Base>

@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+import type { LandingPage } from '../lib/lp';
+interface Props { lp: LandingPage; jsonLd?: object }
+const { lp, jsonLd } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const og = new URL(lp.seo.ogImage ?? '/og-default.svg', Astro.site);
+const { brand, brandDeep, glow } = lp.theme;
+---
+<!doctype html>
+<html lang="pt-BR" style={`--brand:${brand};--brand-deep:${brandDeep};--glow:${glow}`}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{lp.seo.title}</title>
+    <meta name="description" content={lp.seo.description} />
+    <meta name="theme-color" content="#09090b" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content={lp.seo.title} />
+    <meta property="og:description" content={lp.seo.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <slot />
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
+</html>

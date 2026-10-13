@@ -1,0 +1,16 @@
+---
+import type { LandingPage } from '../../lib/lp';
+const { stats } = Astro.props as { stats: LandingPage['stats'] };
+---
+<section class="mx-auto max-w-6xl px-5 py-20">
+  <dl class="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 lg:grid-cols-4">
+    {stats.map((s, i) => (
+      <div data-reveal style={`--d:${i}`} class="bg-ink-2 p-6 sm:p-8">
+        <dd class="font-display text-4xl font-extrabold sm:text-5xl">
+          {s.prefix}<span data-count={s.value}>{s.value}</span><span class="text-glow">{s.suffix}</span>
+        </dd>
+        <dt class="mt-2 text-sm text-white/55">{s.label}</dt>
+      </div>
+    ))}
+  </dl>
+</section>

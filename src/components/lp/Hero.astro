@@ -1,0 +1,55 @@
+---
+import type { LandingPage } from '../../lib/lp';
+import { whatsappUrl } from '../../lib/lp';
+import Icon from '../Icon.astro';
+const { lp } = Astro.props as { lp: LandingPage };
+const { hero } = lp;
+---
+<section id="top" class="grain relative isolate overflow-hidden pb-20 pt-36 sm:pt-44">
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute -left-40 top-0 size-[44rem] rounded-full bg-brand/40 blur-[140px]" style="animation: aurora 14s ease-in-out infinite"></div>
+    <div class="absolute -right-32 top-40 size-[34rem] rounded-full bg-brand-deep/70 blur-[130px]" style="animation: aurora 18s ease-in-out infinite reverse"></div>
+    <div class="absolute inset-0 opacity-[.18] [background-image:linear-gradient(rgb(255_255_255/.07)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/.07)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000,transparent)]"></div>
+  </div>
+
+  <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-[1.15fr_.85fr]">
+    <div>
+      <p data-reveal class="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-white/80 sm:text-sm">
+        <span class="relative flex size-2"><span class="absolute inline-flex size-full rounded-full bg-glow" style="animation: pulse-ring 2s ease-out infinite"></span><span class="relative inline-flex size-2 rounded-full bg-glow"></span></span>
+        {hero.eyebrow}
+      </p>
+      <h1 data-reveal style="--d:1" class="mt-6 text-[2.6rem] font-extrabold leading-[1.02] sm:text-6xl lg:text-7xl">
+        {hero.title[0]} <span class="text-gradient">{hero.title[1]}</span> {hero.title[2]}
+      </h1>
+      <p data-reveal style="--d:2" class="mt-6 max-w-xl text-lg leading-relaxed text-white/65">{hero.text}</p>
+      <div data-reveal style="--d:3" class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <a href={whatsappUrl(lp)} target="_blank" rel="noopener" class="btn-primary">
+          <Icon name="whatsapp" class="size-5" />{hero.primary.label}
+        </a>
+        <a href={hero.secondary.href} class="btn-ghost">{hero.secondary.label}<Icon name="arrow" class="size-4" /></a>
+      </div>
+      <ul data-reveal style="--d:4" class="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/55">
+        {hero.proof.map((p) => <li class="flex items-center gap-2"><Icon name="check" class="size-4 text-glow" />{p}</li>)}
+      </ul>
+    </div>
+
+    <div data-reveal style="--d:3" class="relative mx-auto aspect-square w-full max-w-md" aria-hidden="true">
+      <div class="absolute inset-0 rounded-full border border-white/10" style="animation: spin-slow 40s linear infinite">
+        <span class="absolute -top-1.5 left-1/2 size-3 rounded-full bg-glow shadow-[0_0_20px_var(--glow)]"></span>
+      </div>
+      <div class="absolute inset-8 rounded-full border border-dashed border-white/10" style="animation: spin-slow 60s linear infinite reverse"></div>
+      <div class="absolute inset-16 grid place-items-center rounded-full bg-gradient-to-br from-glow via-brand to-brand-deep shadow-[0_0_120px_-10px_var(--brand)]">
+        <Icon name="brain" class="size-24 text-white/95 drop-shadow-lg" />
+      </div>
+      <div class="glass absolute -left-2 top-10 rounded-2xl px-4 py-3 shadow-2xl" style="animation: float 6s ease-in-out infinite">
+        <p class="font-display text-2xl font-bold">+50 mil</p><p class="text-xs text-white/60">alunos formados</p>
+      </div>
+      <div class="glass absolute -right-2 bottom-14 rounded-2xl px-4 py-3 shadow-2xl" style="animation: float 7s ease-in-out -2s infinite">
+        <p class="text-xs text-white/60">Metodologia</p><p class="font-display text-lg font-bold">com IA em tudo</p>
+      </div>
+      <div class="glass absolute bottom-0 left-8 flex items-center gap-2 rounded-full px-4 py-2 text-sm" style="animation: float 8s ease-in-out -4s infinite">
+        <Icon name="cap" class="size-4 text-glow" />Faculdade + Cursos + Inglês
+      </div>
+    </div>
+  </div>
+</section>

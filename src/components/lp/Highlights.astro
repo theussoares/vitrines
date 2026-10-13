@@ -1,0 +1,20 @@
+---
+import type { LandingPage } from '../../lib/lp';
+import { whatsappUrl } from '../../lib/lp';
+import Icon from '../Icon.astro';
+const { lp } = Astro.props as { lp: LandingPage };
+---
+<section id="caminhos" class="mx-auto max-w-6xl px-5 py-20">
+  <p data-reveal class="text-sm font-semibold uppercase tracking-[.2em] text-glow">Mais caminhos</p>
+  <h2 data-reveal style="--d:1" class="mt-3 max-w-2xl text-4xl font-bold sm:text-5xl">Além dos cursos, três portas para o seu futuro.</h2>
+  <div class="mt-12 grid gap-4 lg:grid-cols-3">
+    {lp.highlights.map((h, i) => (
+      <article data-reveal style={`--d:${i}`} class={`spot relative flex flex-col rounded-3xl p-8 ${i === 1 ? 'bg-gradient-to-br from-brand via-brand to-brand-deep shadow-[0_30px_80px_-30px_var(--brand)]' : 'glass'}`}>
+        <span class="inline-flex w-fit items-center gap-2 rounded-full bg-black/25 px-3 py-1 text-xs font-semibold uppercase tracking-wider"><Icon name={h.icon} class="size-4" />{h.tag}</span>
+        <h3 class="mt-6 text-2xl font-bold leading-tight">{h.title}</h3>
+        <p class={`mt-3 flex-1 ${i === 1 ? 'text-white/85' : 'text-white/60'}`}>{h.text}</p>
+        <a href={whatsappUrl(lp, `Olá! Quero saber mais: ${h.title}.`)} target="_blank" rel="noopener" class={`mt-8 ${i === 1 ? 'btn-ghost !border-white/40 !bg-white !text-brand-deep' : 'btn-ghost'}`}>{h.cta.label}<Icon name="arrow" class="size-4" /></a>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,21 @@
+---
+import type { LandingPage } from '../../lib/lp';
+import { whatsappUrl } from '../../lib/lp';
+import Icon from '../Icon.astro';
+const { lp } = Astro.props as { lp: LandingPage };
+---
+<footer class="border-t border-white/10 py-10">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 text-sm text-white/50 sm:flex-row">
+    <p>© {new Date().getFullYear()} {lp.brand.name} · {lp.brand.city}/MS</p>
+    <div class="flex items-center gap-5">
+      <a href={lp.brand.instagram} target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-white"><Icon name="instagram" class="size-4" />Instagram</a>
+      <a href={whatsappUrl(lp)} target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-white"><Icon name="whatsapp" class="size-4" />{lp.whatsapp.display}</a>
+      <a href={lp.brand.links.href} target="_blank" rel="noopener" class="hover:text-white">{lp.brand.links.label}</a>
+    </div>
+  </div>
+</footer>
+<a href={whatsappUrl(lp)} target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"
+   class="fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-[#25d366] text-white shadow-[0_10px_40px_-6px_#25d366] transition-transform hover:scale-110">
+  <span class="absolute inset-0 rounded-full bg-[#25d366]" style="animation: pulse-ring 2.4s ease-out infinite" aria-hidden="true"></span>
+  <Icon name="whatsapp" class="relative size-7" />
+</a>
