@@ -1,0 +1,26 @@
+---
+import type { LandingPage } from '../../lib/lp';
+import Icon from '../Icon.astro';
+const { reviews } = Astro.props as { reviews: NonNullable<LandingPage['reviews']> };
+---
+<section id="avaliacoes" class="mx-auto max-w-6xl px-5 py-20">
+  <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+    <div>
+      <p data-reveal class="text-sm font-semibold uppercase tracking-[.2em] text-glow">{reviews.source}</p>
+      <h2 data-reveal style="--d:1" class="mt-3 max-w-xl text-4xl font-bold sm:text-5xl">{reviews.title}</h2>
+    </div>
+    <a data-reveal style="--d:2" href={reviews.sourceUrl} target="_blank" rel="noopener" class="btn-ghost w-fit">Ver todas no Google<Icon name="arrow" class="size-4" /></a>
+  </div>
+  <ul class="mt-12 columns-1 gap-4 [column-fill:_balance] sm:columns-2 lg:columns-3">
+    {reviews.items.map((r, i) => (
+      <li data-reveal style={`--d:${i % 3}`} class="spot glass mb-4 break-inside-avoid rounded-3xl p-7">
+        <p class="text-lg tracking-widest text-[#fbbc04]" role="img" aria-label="5 de 5 estrelas">★★★★★</p>
+        <blockquote class="mt-4 text-white/80">“{r.text}”</blockquote>
+        <footer class="mt-5 flex items-center gap-3 text-sm">
+          <span class="grid size-9 place-items-center rounded-full bg-gradient-to-br from-glow to-brand-deep font-semibold" aria-hidden="true">{r.name[0]}</span>
+          <span><span class="block font-semibold">{r.name}</span><span class="text-white/50">Avaliação no Google</span></span>
+        </footer>
+      </li>
+    ))}
+  </ul>
+</section>

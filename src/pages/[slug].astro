@@ -8,6 +8,7 @@ import Stats from '../components/lp/Stats.astro';
 import Method from '../components/lp/Method.astro';
 import Courses from '../components/lp/Courses.astro';
 import Graduates from '../components/lp/Graduates.astro';
+import Reviews from '../components/lp/Reviews.astro';
 import Highlights from '../components/lp/Highlights.astro';
 import Steps from '../components/lp/Steps.astro';
 import Faq from '../components/lp/Faq.astro';
@@ -36,6 +37,7 @@ const jsonLd = {
     <Method method={lp.method} />
     <Courses lp={lp} />
     {lp.graduates && <Graduates graduates={lp.graduates} />}
+    {lp.reviews && <Reviews reviews={lp.reviews} />}
     <Highlights lp={lp} />
     <Steps steps={lp.steps} />
     <Faq faq={lp.faq} />

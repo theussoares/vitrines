@@ -40,6 +40,7 @@ export interface LandingPage {
   coursesSection: { title: string; text: string };
   courses: Course[];
   graduates?: { title: string; text: string; photos: { src: string; alt: string }[] };
+  reviews?: { title: string; source: string; sourceUrl: string; items: { name: string; text: string }[] };
   highlights: Highlight[];
   steps: { title: string; text: string }[];
   faq: { q: string; a: string }[];

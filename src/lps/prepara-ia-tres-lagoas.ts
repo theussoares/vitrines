@@ -113,6 +113,18 @@ export const preparaIaTresLagoas: LandingPage = {
       { src: '/lps/prepara-ia-tres-lagoas/formados/formado-07.webp', alt: 'Aluna formada da Prepara na cerimônia de entrega do certificado' },
     ],
   },
+  reviews: {
+    title: 'Quem estuda aqui recomenda.',
+    source: 'Avaliações de alunos no Google',
+    sourceUrl: 'https://www.google.com/search?q=prepara+ia+tres+lagoas#lrd=0x94909902473f43f1:0x5c68fa25d42d368e,1,,,,',
+    items: [
+      { name: "Maria Clara", text: "escola extremamente acolhedora, professores atenciosos e educados, coordenação e direção super flexíveis e compreensíveis, ambiente climatizado e com computadores rápidos para assistir todas as aulas" },
+      { name: "Heitor", text: "A escola prepara cursos é uma escola de cursos e faculdade que prezam pelo seu conhecimento e aprendizado eu gostei mtu, além do ambiente ser mtu confortável, e acolhedor os professores são mtu simpáticos nota 10 🥰🥰" },
+      { name: "Vitor", text: "Foi bom aprendi bastante e ainda tô aprendendo muitas coisas novas para meu futuro" },
+      { name: "Miguel", text: "Ótima escola, estou aprendendo muito aqui a metodologia é incrível muito fácil e legal de entender os assuntos!!!" },
+      { name: "Beatriz", text: "Melhor escola e faculdade de Três lagoas, profissionais excelentes, metodologia avançada… Vale a pena investir no seu futuro!" },
+    ],
+  },
   highlights: [
     {
       tag: 'Faculdade',
