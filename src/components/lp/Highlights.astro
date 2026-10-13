@@ -5,8 +5,8 @@ import Icon from '../Icon.astro';
 const { lp } = Astro.props as { lp: LandingPage };
 ---
 <section id="caminhos" class="mx-auto max-w-6xl px-5 py-20">
-  <p data-reveal class="text-sm font-semibold uppercase tracking-[.2em] text-glow">Mais caminhos</p>
-  <h2 data-reveal style="--d:1" class="mt-3 max-w-2xl text-4xl font-bold sm:text-5xl">Além dos cursos, três portas para o seu futuro.</h2>
+  <p data-reveal class="text-sm font-semibold uppercase tracking-[.2em] text-glow">{lp.ui?.highlightsEyebrow ?? 'Mais caminhos'}</p>
+  <h2 data-reveal style="--d:1" class="mt-3 max-w-2xl text-4xl font-bold sm:text-5xl">{lp.ui?.highlightsTitle ?? 'Além dos cursos, três portas para o seu futuro.'}</h2>
   <div class="mt-12 grid gap-4 lg:grid-cols-3">
     {lp.highlights.map((h, i) => (
       <article data-reveal style={`--d:${i}`} class={`spot relative flex flex-col rounded-3xl p-8 ${i === 1 ? 'bg-gradient-to-br from-brand via-brand to-brand-deep shadow-[0_30px_80px_-30px_var(--brand)]' : 'glass'}`}>

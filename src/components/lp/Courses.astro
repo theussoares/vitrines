@@ -7,7 +7,7 @@ const { lp } = Astro.props as { lp: LandingPage };
 <section id="cursos" class="mx-auto max-w-6xl px-5 py-20">
   <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
     <div class="max-w-xl">
-      <p data-reveal class="text-sm font-semibold uppercase tracking-[.2em] text-glow">Cursos profissionalizantes</p>
+      <p data-reveal class="text-sm font-semibold uppercase tracking-[.2em] text-glow">{lp.ui?.coursesEyebrow ?? 'Cursos profissionalizantes'}</p>
       <h2 data-reveal style="--d:1" class="mt-3 text-4xl font-bold sm:text-5xl">{lp.coursesSection.title}</h2>
     </div>
     <p data-reveal style="--d:2" class="max-w-sm text-white/60">{lp.coursesSection.text}</p>
@@ -16,7 +16,7 @@ const { lp } = Astro.props as { lp: LandingPage };
     {lp.courses.map((c, i) => (
       <a
         data-reveal style={`--d:${i}`}
-        href={whatsappUrl(lp, `Olá! Quero saber mais sobre o curso ${c.title}.`)} target="_blank" rel="noopener"
+        href={whatsappUrl(lp, `Olá! Quero saber mais sobre ${c.title}.`)} target="_blank" rel="noopener"
         class={`spot group glass flex min-h-60 flex-col justify-between rounded-3xl p-7 transition-transform duration-500 hover:-translate-y-1 ${i < 2 ? 'lg:col-span-3' : 'lg:col-span-2'}`}
       >
         <div class="flex items-start justify-between">

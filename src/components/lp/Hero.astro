@@ -4,6 +4,8 @@ import { whatsappUrl } from '../../lib/lp';
 import Icon from '../Icon.astro';
 const { lp } = Astro.props as { lp: LandingPage };
 const { hero } = lp;
+const cards = lp.ui?.heroCards ?? { big: '+50 mil', small: 'alunos formados', tag: ['Metodologia', 'com IA em tudo'] as [string, string], pill: { icon: 'cap' as const, text: 'Faculdade + Cursos + Inglês' } };
+const heroIcon = lp.ui?.heroIcon ?? 'brain';
 ---
 <section id="top" class="grain relative isolate overflow-hidden pb-20 pt-36 sm:pt-44">
   <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
@@ -39,16 +41,16 @@ const { hero } = lp;
       </div>
       <div class="absolute inset-8 rounded-full border border-dashed border-white/10" style="animation: spin-slow 60s linear infinite reverse"></div>
       <div class="absolute inset-16 grid place-items-center rounded-full bg-gradient-to-br from-glow via-brand to-brand-deep shadow-[0_0_120px_-10px_var(--brand)]">
-        <Icon name="brain" class="size-24 text-white/95 drop-shadow-lg" />
+        <Icon name={heroIcon} class="size-24 text-white/95 drop-shadow-lg" />
       </div>
       <div class="glass absolute -left-2 top-10 rounded-2xl px-4 py-3 shadow-2xl" style="animation: float 6s ease-in-out infinite">
-        <p class="font-display text-2xl font-bold">+50 mil</p><p class="text-xs text-white/60">alunos formados</p>
+        <p class="font-display text-2xl font-bold">{cards.big}</p><p class="text-xs text-white/60">{cards.small}</p>
       </div>
       <div class="glass absolute -right-2 bottom-14 rounded-2xl px-4 py-3 shadow-2xl" style="animation: float 7s ease-in-out -2s infinite">
-        <p class="text-xs text-white/60">Metodologia</p><p class="font-display text-lg font-bold">com IA em tudo</p>
+        <p class="text-xs text-white/60">{cards.tag[0]}</p><p class="font-display text-lg font-bold">{cards.tag[1]}</p>
       </div>
       <div class="glass absolute bottom-0 left-8 flex items-center gap-2 rounded-full px-4 py-2 text-sm" style="animation: float 8s ease-in-out -4s infinite">
-        <Icon name="cap" class="size-4 text-glow" />Faculdade + Cursos + Inglês
+        <Icon name={cards.pill.icon} class="size-4 text-glow" />{cards.pill.text}
       </div>
     </div>
   </div>
