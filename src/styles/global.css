@@ -67,10 +67,10 @@ p { text-wrap: pretty; }
 :focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; border-radius: 6px; }
 
 /* entrada ao rolar */
-[data-reveal] { opacity: 0; transform: translateY(28px); filter: blur(6px);
-  transition: opacity .9s var(--ease-out-expo), transform .9s var(--ease-out-expo), filter .9s var(--ease-out-expo);
+[data-reveal] { opacity: 0; transform: translateY(28px);
+  transition: opacity .9s var(--ease-out-expo), transform .9s var(--ease-out-expo);
   transition-delay: calc(var(--d, 0) * 90ms); }
-[data-reveal].is-in { opacity: 1; transform: none; filter: none; }
+[data-reveal].is-in { opacity: 1; transform: none; }
 
 .marquee { display: flex; width: max-content; animation: marquee 38s linear infinite; }
 .marquee:hover { animation-play-state: paused; }
@@ -97,9 +97,17 @@ details[open]::details-content { block-size: auto; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; filter: none; }
+  [data-reveal] { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
 
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* celular: tira efeitos caros de GPU (blur gigante, grão com blend, backdrop-filter) */
+@media (max-width: 767px) {
+  .grain::after { display: none; }
+  .glass { backdrop-filter: none; background: rgb(255 255 255 / .06); }
+  .text-gradient { animation: none; }
+  [style*="aurora"] { animation: none !important; filter: blur(70px) !important; }
+}
