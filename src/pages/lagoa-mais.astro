@@ -1,0 +1,352 @@
+---
+import '../styles/global.css';
+
+const wa = (msg: string) => `https://wa.me/5567992171768?text=${encodeURIComponent(msg)}`;
+const waGeral = wa('Olá! Tenho uma loja em Três Lagoas e quero saber mais sobre o Lagoa+.');
+const waFundador = wa('Olá! Tenho uma loja em Três Lagoas e quero saber mais sobre o plano Fundador do Lagoa+.');
+const waPro = wa('Olá! Tenho uma loja em Três Lagoas e quero saber mais sobre o plano Fundador Pro do Lagoa+.');
+
+const title = 'Lagoa+ · Faça seu cliente voltar e comprar de novo';
+const description =
+  'Pare de perder cliente para o concorrente. Com o Lagoa+, quem compra uma vez volta e compra de novo. A partir de R$ 79,90/mês, sem fidelidade.';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const nav = [['#como', 'Como funciona'], ['#sumidos', 'Clientes de volta'], ['#preco', 'Preço'], ['#duvidas', 'Dúvidas']];
+
+const rules = [
+  ['2×', 'Dia fraco com movimento', 'Carimbo em dobro só no dia que você escolher.'],
+  ['+1', 'Cliente trazendo cliente', 'Quem indica ganha +1 carimbo quando o amigo faz a primeira compra.'],
+  ['+2', 'Cliente novo que já quer voltar', 'O cartão começa com 2 carimbos. Quem começa andado tem pressa de terminar.'],
+  ['2×', 'Um motivo a mais no aniversário', 'No dia do aniversário, cada visita vale dois carimbos.'],
+];
+
+const lapsed = [
+  ['(67) 9••••-0374', 'há 34 dias'],
+  ['(67) 9••••-1182', 'há 41 dias'],
+  ['(67) 9••••-5520', 'há 58 dias'],
+];
+
+const faq = [
+  ['Vai dar trabalho no balcão?', 'Não. São dois passos na venda: você gera o QR e o cliente escaneia. Não precisa digitar nada dele.'],
+  ['O cliente precisa baixar um aplicativo?', 'Não precisa de loja de aplicativos. A carteira abre no navegador do celular e pode ser instalada na tela inicial.'],
+  ['Preciso mudar meu caixa ou sistema?', 'Não. O Balcão roda no navegador do computador, do tablet ou do celular que já fica no balcão.'],
+  ['E se não funcionar para a minha loja?', 'Sem fidelidade e sem multa: se não fizer sentido, é só avisar a Equipe Lagoa+.'],
+  ['Como o cliente ganha o carimbo?', 'Na venda, você gera o QR da visita no Balcão. O cliente aponta a câmera (ou digita o código curto) e o carimbo cai na carteira. O cartaz da loja serve para ele entrar no clube.'],
+  ['E se alguém tentar juntar carimbo demais?', 'Cada QR da visita vale uma vez só e expira em 5 minutos. Além disso, cada cliente ganha no máximo uma visita por loja a cada intervalo que você define. O código de resgate também é de uso único e vence em cerca de 10 minutos.'],
+  ['Como o cliente resgata o prêmio?', 'Ele gera um código de 6 letras e números que vale por cerca de 10 minutos. Você confere no Balcão e entrega. O prêmio que não for resgatado fica guardado por 30 dias, e depois do resgate o próximo cartão já começa andado se as boas-vindas estiverem ligadas.'],
+  ['Quanto custa?', 'O Fundador custa R$ 79,90 por mês e o Fundador Pro, R$ 89,90, os dois com preço travado e sem fidelidade. A loja entra depois da aprovação da rede. O preço de Fundador vale só para as primeiras 10 lojas.'],
+  ['Qual a diferença entre Fundador e Pro?', 'O Pro inclui a lista de quem sumiu, os lembretes com carimbo de presente e o destaque da sua loja no Descobrir.'],
+  ['Como ficam os dados dos meus clientes?', 'O celular é dado pessoal: aparece mascarado nas listas e nunca é exposto. Lembrete só vai para quem aceitou receber avisos, e a pessoa pode cancelar quando quiser.'],
+  ['Posso mudar a meta depois?', 'Pode, quando quiser. A mudança cria uma nova versão do programa: os cartões em andamento terminam na versão em que começaram e os cartões novos já usam a regra nova.'],
+  ['O que acontece depois que eu chamo no WhatsApp?', 'A Equipe Lagoa+ responde em até 24 horas, conversa sobre a sua loja e, com a loja aprovada, monta o clube com você.'],
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Organization', name: 'Lagoa+', telephone: '+5567992171768', areaServed: 'Três Lagoas, MS' },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<!doctype html>
+<html lang="pt-BR" style="--brand:#f5b324;--brand-deep:#b87a00;--glow:#ffd36b;--lagoa:#062b3a">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#062B3A" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="bg-[#062b3a] text-white">
+    <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:text-black">Pular para o conteúdo</a>
+
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-[#062b3a]/85 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
+        <a href="#inicio" class="font-display text-2xl font-extrabold tracking-tight">Lagoa<span class="text-brand">+</span></a>
+        <nav class="hidden gap-7 text-sm text-white/70 md:flex" aria-label="Seções">
+          {nav.map(([h, l]) => <a href={h} class="hover:text-white">{l}</a>)}
+          <a href="https://lagoa-one.vercel.app/balcao/entrar" class="hover:text-white">Entrar no Balcão</a>
+        </nav>
+        <a href={waGeral} target="_blank" rel="noopener" class="btn-primary !min-h-10 !px-5 text-sm !text-[#062b3a]">Quero vender mais</a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- Hero -->
+      <section id="inicio" class="relative overflow-hidden">
+        <div class="pointer-events-none absolute -right-40 -top-40 size-[520px] rounded-full bg-brand/20 blur-3xl"></div>
+        <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 lg:grid-cols-[1.1fr_.9fr] lg:py-24">
+          <div>
+            <h1 class="text-4xl font-extrabold leading-[1.05] sm:text-6xl">
+              Todo dia sai cliente da sua loja que nunca mais volta.
+              <span class="mt-2 block text-brand">É dinheiro que já era seu indo embora.</span>
+            </h1>
+            <p class="mt-6 max-w-xl text-lg text-white/75">
+              O Lagoa+ faz esse cliente voltar e comprar de novo. Na venda você gera um QR, ele junta carimbos no celular e volta para buscar o prêmio. Venda a mais, sem gastar um real com anúncio.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href={waGeral} target="_blank" rel="noopener" class="btn-primary !text-[#062b3a]">Quero vender mais</a>
+              <a href="#balcao" class="btn-ghost">Experimentar o Balcão</a>
+            </div>
+            <p class="mt-5 text-sm text-white/60">Piloto em Três Lagoas/MS · só 10 lojas com preço de Fundador, a partir de R$ 79,90/mês</p>
+          </div>
+
+          <!-- Cartão de exemplo -->
+          <div class="mx-auto w-full max-w-sm rounded-3xl bg-white p-6 text-[#062b3a] shadow-2xl shadow-black/40 [transform:rotate(2deg)]">
+            <div class="flex items-center justify-between text-sm font-semibold">
+              <span>Sua barbearia</span><span class="text-[#062b3a]/50">Cartão de 10 carimbos</span>
+            </div>
+            <div class="mt-5 grid grid-cols-5 gap-3" role="img" aria-label="Cartão de exemplo: 8 de 10 carimbos. Faltam 2 para Corte grátis.">
+              {Array.from({ length: 10 }, (_, i) => (
+                <span class={`grid aspect-square place-items-center rounded-full text-sm font-bold ${i < 8 ? 'bg-[#062b3a] text-brand' : 'border-2 border-dashed border-[#062b3a]/25 text-[#062b3a]/30'}`}>
+                  {i < 8 ? '✓' : i + 1}
+                </span>
+              ))}
+            </div>
+            <p class="mt-6 text-center"><span class="font-display text-5xl font-extrabold">2</span><span class="block text-sm text-[#062b3a]/70">carimbos para <strong>Corte grátis</strong></span></p>
+            <p class="mt-4 rounded-xl bg-[#062b3a]/5 px-3 py-2 text-center text-xs text-[#062b3a]/70">+1 carimbo pelo QR da visita · agora 8 de 10</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Problema -->
+      <section class="border-y border-white/10 bg-black/20">
+        <div class="mx-auto max-w-3xl px-5 py-16 text-center">
+          <h2 class="text-3xl font-bold sm:text-4xl">Você conhece esse mês.</h2>
+          <ul class="mt-6 space-y-2 text-lg text-white/70">
+            <li>Terça e quarta, a loja às moscas.</li>
+            <li>O cliente compra uma vez e some.</li>
+            <li>Ele vai para o concorrente e você nem fica sabendo.</li>
+          </ul>
+          <p class="mt-8 text-xl font-semibold text-brand">Não é falta de cliente. É falta de motivo para ele voltar.</p>
+        </div>
+      </section>
+
+      <!-- Como funciona -->
+      <section id="como" class="mx-auto max-w-6xl px-5 py-20">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-bold sm:text-5xl">Seu cliente sai da loja já pensando em voltar.</h2>
+          <p class="mt-4 text-lg text-white/70">Na venda, você gera um QR e ele escaneia. Pronto: ele tem um prêmio pela frente e um motivo para voltar.</p>
+        </div>
+        <div class="mt-10 grid gap-5 md:grid-cols-2">
+          {[
+            ['1', 'Gere o QR', 'De carimbo, ou com o valor da compra para dar pontos.'],
+            ['2', 'O cliente escaneia', 'Ou digita o código curto. O carimbo cai na carteira e ele já vê quanto falta para o prêmio.'],
+          ].map(([n, t, d]) => (
+            <div class="glass rounded-3xl p-7">
+              <span class="grid size-10 place-items-center rounded-full bg-brand font-display font-bold text-[#062b3a]">{n}</span>
+              <h3 class="mt-4 text-xl font-bold">{t}</h3>
+              <p class="mt-2 text-white/70">{d}</p>
+            </div>
+          ))}
+        </div>
+        <ul class="mt-8 grid gap-3 text-white/75 sm:grid-cols-2">
+          {[
+            'Cliente novo já sai com o cartão',
+            'Cada QR vale uma vez só e expira em 5 minutos',
+            'Sem celular do cliente no balcão: nada para digitar',
+            'Nos pontos por real, quanto mais ele compra, mais rápido chega no prêmio',
+          ].map((t) => <li class="flex gap-3"><span class="text-brand">✓</span>{t}</li>)}
+        </ul>
+      </section>
+
+      <!-- Balcão (demo) -->
+      <section id="balcao" class="bg-black/20 py-20">
+        <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-2">
+          <div>
+            <h2 class="text-3xl font-bold sm:text-5xl">Balcão</h2>
+            <p class="mt-4 text-lg text-white/70">Veja como é simples: gere um QR e simule a leitura do cliente.</p>
+          </div>
+          <div class="glass rounded-3xl p-6" data-balcao>
+            <div class="flex gap-2" role="group" aria-label="Tipo de QR">
+              <button type="button" data-tipo="carimbo" aria-pressed="true" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold aria-pressed:bg-brand aria-pressed:text-[#062b3a]">Carimbo</button>
+              <button type="button" data-tipo="valor" aria-pressed="false" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold aria-pressed:bg-brand aria-pressed:text-[#062b3a]">Por valor</button>
+            </div>
+            <button type="button" data-gerar class="btn-primary mt-5 w-full !text-[#062b3a]">Gerar QR da visita</button>
+            <div class="mt-5 grid min-h-48 place-items-center rounded-2xl bg-white p-4 text-center text-[#062b3a]" aria-live="polite" data-saida>
+              <p class="text-sm text-[#062b3a]/60">O QR da visita aparece aqui.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Clientes de volta -->
+      <section id="sumidos" class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-2">
+        <div>
+          <span class="rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">No Fundador Pro</span>
+          <h2 class="mt-4 text-3xl font-bold sm:text-5xl">Quem sumiu volta a comprar.</h2>
+          <p class="mt-4 text-lg text-white/70">O Lagoa+ mostra quem não aparece há mais de 30 dias e manda um lembrete com carimbo de presente. É venda que já foi sua, voltando para o seu caixa.</p>
+          <p class="mt-4 text-sm text-white/60">Só recebe aviso quem aceitou. O celular aparece sempre mascarado.</p>
+        </div>
+        <div class="glass rounded-3xl p-6">
+          <p class="text-sm font-semibold text-white/60">Sem visita há mais de 30 dias</p>
+          <ul class="mt-4 divide-y divide-white/10">
+            {lapsed.map(([tel, dias]) => (
+              <li class="flex items-center justify-between gap-3 py-3">
+                <span><span class="font-semibold">{tel}</span> <span class="text-sm text-white/50">{dias}</span></span>
+                <span class="rounded-full bg-emerald-400/15 px-3 py-1 text-xs text-emerald-300">Aceitou avisos</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-4 rounded-xl bg-brand/10 px-4 py-3 text-sm text-brand">Lembrete: “Sentimos sua falta. Volte e ganhe 1 carimbo de presente.”</p>
+          <p class="mt-3 text-xs text-white/40">Exemplo ilustrativo</p>
+        </div>
+      </section>
+
+      <!-- Regras -->
+      <section class="bg-black/20 py-20">
+        <div class="mx-auto max-w-6xl px-5">
+          <h2 class="max-w-2xl text-3xl font-bold sm:text-5xl">Movimento até no dia fraco.</h2>
+          <p class="mt-4 max-w-2xl text-lg text-white/70">Ligue o que faz sentido para a sua loja. Se duas regras caírem no mesmo dia, vale a maior.</p>
+          <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {rules.map(([n, t, d]) => (
+              <div class="glass rounded-3xl p-6">
+                <span class="font-display text-4xl font-extrabold text-brand">{n}</span>
+                <h3 class="mt-3 font-bold">{t}</h3>
+                <p class="mt-2 text-sm text-white/70">{d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Descobrir -->
+      <section class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-2">
+        <div>
+          <span class="rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand">Destaque no Fundador Pro</span>
+          <h2 class="mt-4 text-3xl font-bold sm:text-5xl">Cliente novo sem pagar anúncio.</h2>
+          <p class="mt-4 text-lg text-white/70">Na vitrine Descobrir, o cliente vê as lojas da cidade e os desafios do mês. Quem junta carimbo no café descobre a sua loja no caminho.</p>
+          <p class="mt-4 text-sm text-white/60">No Pro, sua loja aparece em destaque no Descobrir.</p>
+        </div>
+        <div class="glass rounded-3xl p-6">
+          <h3 class="font-bold">Visite 3 lojas novas</h3>
+          <p class="text-sm text-white/60">Complete o desafio do mês e ganhe carimbo extra.</p>
+          <ul class="mt-5 space-y-3">
+            {[['Café', true], ['Pizzaria', false], ['Sua loja', false]].map(([n, ok]) => (
+              <li class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3">
+                <span class="font-semibold">{n}</span>
+                <span class={ok ? 'text-sm text-emerald-300' : 'text-sm text-white/50'}>{ok ? 'visitada' : 'falta visitar'}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-4 text-sm font-semibold text-brand">1 de 3 visitadas</p>
+        </div>
+      </section>
+
+      <!-- Preço -->
+      <section id="preco" class="bg-black/20 py-20">
+        <div class="mx-auto max-w-5xl px-5">
+          <h2 class="text-center text-3xl font-bold sm:text-5xl">Menos de R$ 3 por dia para parar de perder cliente.</h2>
+          <p class="mx-auto mt-4 max-w-2xl text-center text-white/70">Exemplo: com ticket médio de R$ 30, 3 voltas a mais no mês cobrem o Fundador. Só 10 lojas entram com preço de Fundador. Depois, o preço volta para R$ 119,90 e R$ 249,90.</p>
+          <div class="mt-12 grid gap-6 md:grid-cols-2">
+            <div class="glass flex flex-col rounded-3xl p-8">
+              <h3 class="text-xl font-bold">Fundador</h3>
+              <p class="mt-4 text-sm text-white/50">de <s>R$ 119,90</s> por</p>
+              <p class="font-display"><span class="text-2xl">R$</span> <span class="text-6xl font-extrabold">79,90</span><span class="text-white/60">/mês</span></p>
+              <ul class="mt-6 flex-1 space-y-2 text-white/80">
+                {['Cliente voltando a cada compra', 'Movimento no dia fraco', 'Cliente novo pela indicação e pela vitrine da cidade', 'Implantação com a Equipe Lagoa+'].map((t) => <li class="flex gap-3"><span class="text-brand">✓</span>{t}</li>)}
+              </ul>
+              <a href={waFundador} target="_blank" rel="noopener" class="btn-primary mt-8 !text-[#062b3a]">Quero vender mais</a>
+            </div>
+            <div class="relative flex flex-col rounded-3xl border-2 border-brand bg-brand/10 p-8">
+              <span class="absolute -top-3 right-6 rounded-full bg-brand px-3 py-1 text-xs font-bold text-[#062b3a]">Mais completo</span>
+              <h3 class="text-xl font-bold">Fundador Pro</h3>
+              <p class="mt-4 text-sm text-white/50">de <s>R$ 249,90</s> por</p>
+              <p class="font-display"><span class="text-2xl">R$</span> <span class="text-6xl font-extrabold">89,90</span><span class="text-white/60">/mês</span></p>
+              <p class="mt-6 text-sm font-semibold text-white/60">Tudo do Fundador, mais:</p>
+              <ul class="mt-2 flex-1 space-y-2 text-white/80">
+                {['Recupere quem parou de comprar', 'Lembrete com carimbo de presente para trazer de volta', 'Sua loja em destaque no Descobrir'].map((t) => <li class="flex gap-3"><span class="text-brand">✓</span>{t}</li>)}
+              </ul>
+              <a href={waPro} target="_blank" rel="noopener" class="btn-primary mt-8 !text-[#062b3a]">Quero vender mais</a>
+            </div>
+          </div>
+          <ul class="mt-8 grid gap-3 text-sm text-white/75 sm:grid-cols-3">
+            <li class="flex gap-2"><span class="text-brand">✓</span>Preço travado enquanto você estiver no clube</li>
+            <li class="flex gap-2"><span class="text-brand">✓</span>Sem fidelidade: cancele quando quiser</li>
+            <li class="flex gap-2"><span class="text-brand">✓</span>Implantação grátis: a Equipe Lagoa+ monta o clube com você</li>
+          </ul>
+          <p class="mt-6 text-center text-sm text-white/50">A rede aprova cada loja para o clube ter só comércio de verdade da cidade. A Equipe Lagoa+ conversa com você antes.</p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="duvidas" class="mx-auto max-w-3xl px-5 py-20">
+        <h2 class="text-center text-3xl font-bold sm:text-5xl">Perguntas frequentes</h2>
+        <div class="mt-10 space-y-3">
+          {faq.map(([q, a]) => (
+            <details class="glass group rounded-2xl px-6">
+              <summary class="flex min-h-16 cursor-pointer items-center justify-between gap-4 py-4 text-left font-semibold">
+                {q}<span class="faq-plus text-2xl leading-none text-brand transition-transform duration-300" aria-hidden="true">+</span>
+              </summary>
+              <p class="pb-6 text-white/70">{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA final -->
+      <section class="border-t border-white/10 bg-black/20 py-20">
+        <div class="mx-auto grid max-w-5xl items-center gap-10 px-5 lg:grid-cols-2">
+          <div>
+            <h2 class="text-3xl font-bold sm:text-5xl">Cada dia sem clube é cliente indo embora.</h2>
+            <p class="mt-4 text-lg text-white/70">Chame agora no WhatsApp. A gente monta o clube com você, sem custo de implantação.</p>
+            <a href={waGeral} target="_blank" rel="noopener" class="btn-primary mt-8 !text-[#062b3a]">Quero vender mais</a>
+            <p class="mt-5 text-sm text-white/60">WhatsApp da rede: <a class="font-semibold text-white" href={waGeral} target="_blank" rel="noopener">(67) 99217-1768</a></p>
+          </div>
+          <ol class="glass space-y-4 rounded-3xl p-7">
+            <li class="text-sm font-semibold uppercase tracking-wider text-white/50">O que acontece depois</li>
+            {['Você chama no WhatsApp e conta sobre a sua loja.', 'A Equipe Lagoa+ responde em até 24 horas.', 'Com a loja aprovada, a gente monta o clube com você.'].map((t, i) => (
+              <li class="flex gap-4"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-brand font-bold text-[#062b3a]">{i + 1}</span><span class="text-white/80">{t}</span></li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 px-5 py-8 text-center text-sm text-white/50">
+      <p>Só 10 lojas com preço de Fundador · a partir de R$ 79,90/mês · sem fidelidade</p>
+      <p class="mt-2">© Lagoa+ · Três Lagoas/MS</p>
+    </footer>
+
+    <script>
+      const root = document.querySelector<HTMLElement>('[data-balcao]');
+      if (root) {
+        let tipo = 'carimbo';
+        const saida = root.querySelector<HTMLElement>('[data-saida]')!;
+        const botoes = root.querySelectorAll<HTMLButtonElement>('[data-tipo]');
+        botoes.forEach((b) =>
+          b.addEventListener('click', () => {
+            tipo = b.dataset.tipo!;
+            botoes.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+          }),
+        );
+        root.querySelector('[data-gerar]')!.addEventListener('click', () => {
+          const codigo = Array.from({ length: 6 }, () => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[Math.floor(Math.random() * 32)]).join('');
+          // QR decorativo: grade pseudo-aleatória de 21x21
+          const cells = Array.from({ length: 441 }, () => (Math.random() > 0.5 ? '#062b3a' : '#fff'));
+          saida.innerHTML = `
+            <div class="w-full">
+              <div class="mx-auto grid size-36 grid-cols-[repeat(21,1fr)]" aria-hidden="true">${cells.map((c) => `<i style="background:${c}"></i>`).join('')}</div>
+              <p class="mt-3 text-xs text-[#062b3a]/60">Código curto: <strong class="tracking-widest">${codigo}</strong> · expira em 5 min</p>
+              <button type="button" data-scan class="mt-3 rounded-full bg-[#062b3a] px-4 py-2 text-sm font-semibold text-white">Simular leitura do cliente</button>
+            </div>`;
+          saida.querySelector('[data-scan]')!.addEventListener('click', () => {
+            saida.innerHTML =
+              tipo === 'carimbo'
+                ? '<p class="font-semibold">✓ Carimbo registrado!<br><span class="text-sm font-normal text-[#062b3a]/70">Agora são 9 de 10. Falta 1 para o prêmio.</span></p>'
+                : '<p class="font-semibold">✓ Pontos registrados!<br><span class="text-sm font-normal text-[#062b3a]/70">Compra de R$ 30,00 somada ao cartão do cliente.</span></p>';
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
