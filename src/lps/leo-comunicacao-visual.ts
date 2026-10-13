@@ -81,6 +81,8 @@ export const leoComunicacaoVisual: LandingPage = {
       { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-fachada-valedapedra.webp', alt: 'Fachada e adesivagem de vitrine da Vale da Pedra Foods', tag: 'Fachada e adesivagem de vitrine' },
       { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-cartoes-vamos.webp', alt: 'Cartões de visita impressos', tag: 'Cartões de visita' },
       { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-panfleto-marmitaria.webp', alt: 'Panfletos e cardápio impressos', tag: 'Panfletos e cardápio' },
+      { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-plaquinha-pix.webp', alt: 'Plaquinha de Pix em acrílico', tag: 'Plaquinha de Pix em acrílico' },
+      { src: '/lps/leo-comunicacao-visual/trabalhos/trabalho-quadro-pvc.webp', alt: 'Quadro decorativo em PVC', tag: 'Quadro decorativo em PVC' },
     ],
   },
   highlights: [
