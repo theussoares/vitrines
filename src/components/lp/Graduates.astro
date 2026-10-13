@@ -1,0 +1,20 @@
+---
+import type { LandingPage } from '../../lib/lp';
+const { graduates } = Astro.props as { graduates: NonNullable<LandingPage['graduates']> };
+---
+<section id="formados" class="py-20">
+  <div class="mx-auto max-w-6xl px-5">
+    <p data-reveal class="text-sm font-semibold uppercase tracking-[.2em] text-glow">Formados</p>
+    <h2 data-reveal style="--d:1" class="mt-3 max-w-2xl text-4xl font-bold sm:text-5xl">{graduates.title}</h2>
+    <p data-reveal style="--d:2" class="mt-5 max-w-xl text-lg text-white/60">{graduates.text}</p>
+  </div>
+  <ul class="no-scrollbar mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 ps-5 pe-5 scroll-px-5 lg:ps-[max(1.25rem,calc(50vw-34.75rem))] lg:scroll-ps-[max(1.25rem,calc(50vw-34.75rem))]" tabindex="0" aria-label="Fotos de alunos formados">
+    {graduates.photos.map((p, i) => (
+      <li data-reveal style={`--d:${i % 4}`} class="group relative aspect-[3/4] w-64 shrink-0 snap-start overflow-hidden rounded-3xl border border-white/10 sm:w-72">
+        <img src={p.src} alt={p.alt} width="720" height="960" loading="lazy" decoding="async" class="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-4 rounded-full bg-brand px-3 py-1 text-xs font-semibold shadow-lg">Formado Prepara</span>
+      </li>
+    ))}
+  </ul>
+</section>

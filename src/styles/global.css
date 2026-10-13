@@ -100,3 +100,6 @@ details[open]::details-content { block-size: auto; }
   [data-reveal] { opacity: 1; transform: none; filter: none; }
   html { scroll-behavior: auto; }
 }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

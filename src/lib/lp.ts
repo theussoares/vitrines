@@ -39,6 +39,7 @@ export interface LandingPage {
   method: { title: string; text: string; items: { icon: IconName; title: string; text: string }[] };
   coursesSection: { title: string; text: string };
   courses: Course[];
+  graduates?: { title: string; text: string; photos: { src: string; alt: string }[] };
   highlights: Highlight[];
   steps: { title: string; text: string }[];
   faq: { q: string; a: string }[];

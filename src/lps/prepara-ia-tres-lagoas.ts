@@ -100,6 +100,19 @@ export const preparaIaTresLagoas: LandingPage = {
       blurb: 'Dados, planilhas e dashboards que viram decisão.',
     },
   ],
+  graduates: {
+    title: 'Quem já passou por aqui, se formou.',
+    text: 'Mais de 50 mil alunos formados. Esta pode ser a sua foto de beca e certificado na mão.',
+    photos: [
+      { src: '/lps/prepara-ia-tres-lagoas/formados/formado-01.webp', alt: 'Aluno formado da Prepara com beca, canudo e certificado' },
+      { src: '/lps/prepara-ia-tres-lagoas/formados/formado-02.webp', alt: 'Aluno formado da Prepara segurando o certificado' },
+      { src: '/lps/prepara-ia-tres-lagoas/formados/formado-03.webp', alt: 'Aluna formada da Prepara com beca e certificado' },
+      { src: '/lps/prepara-ia-tres-lagoas/formados/formado-04.webp', alt: 'Aluno formado da Prepara sorrindo com o certificado' },
+      { src: '/lps/prepara-ia-tres-lagoas/formados/formado-05.webp', alt: 'Aluna formada da Prepara com beca e canudo' },
+      { src: '/lps/prepara-ia-tres-lagoas/formados/formado-06.webp', alt: 'Aluna formada da Prepara com certificado' },
+      { src: '/lps/prepara-ia-tres-lagoas/formados/formado-07.webp', alt: 'Aluna formada da Prepara na cerimônia de entrega do certificado' },
+    ],
+  },
   highlights: [
     {
       tag: 'Faculdade',
