@@ -25,7 +25,7 @@ export const preparaIaTresLagoas: LandingPage = {
     text: 'Faculdade, cursos profissionalizantes e inglês em Três Lagoas. Uma escola que ensina o que o mercado pede, com IA presente em cada etapa do seu aprendizado.',
     primary: { label: 'Falar com a secretaria', href: '#contato' },
     secondary: { label: 'Ver cursos', href: '#cursos' },
-    proof: ['+50 mil formados', 'Faculdade + Profissionalizantes + Inglês', '2 anos de Prepara IA'],
+    proof: ['+50 mil formados', '4,8 ★ em 101 avaliações no Google', 'Faculdade + Profissionalizantes + Inglês'],
   },
   marquee: [
     'Profissional da saúde',
@@ -114,6 +114,8 @@ export const preparaIaTresLagoas: LandingPage = {
     ],
   },
   reviews: {
+    rating: '4,8',
+    count: 101,
     title: 'Quem estuda aqui recomenda.',
     source: 'Avaliações de alunos no Google',
     sourceUrl: 'https://www.google.com/search?q=prepara+ia+tres+lagoas#lrd=0x94909902473f43f1:0x5c68fa25d42d368e,1,,,,',
